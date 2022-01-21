@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setError, addSmurf } from '../actions';
 
-const AddForm = ({ setError, addSmurf, error, dispatch }) => {
+const AddForm = ({ setError, addSmurf, error }) => {
     const [state, setState] = useState({
         name:"",
         position:"",
@@ -24,7 +24,7 @@ const AddForm = ({ setError, addSmurf, error, dispatch }) => {
         if (state.name === "" || state.position === "" || state.nickname === "") {
             setError('name, position, and nickname are required')
         } else {
-            addSmurf({...state, id:Date.now()});
+            addSmurf({id:Date.now(), ...state});
             setState({
                 name:"",
                 position:"",
