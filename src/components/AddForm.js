@@ -10,7 +10,6 @@ const AddForm = ({ setError, addSmurf, error, dispatch }) => {
         description:""
     });
 
-    //remove when error state is added
     const errorMessage = error;
 
     const handleChange = e => {
@@ -24,10 +23,8 @@ const AddForm = ({ setError, addSmurf, error, dispatch }) => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
             setError('name, position, and nickname are required')
-            //dispatch a custom error action
         } else {
-            //dispatch an addSmurf action
-            addSmurf(state);
+            addSmurf({...state, id:Date.now()});
             setState({
                 name:"",
                 position:"",
@@ -71,10 +68,3 @@ const mapStateToProps = state =>{
 }
 
 export default connect(mapStateToProps, { setError, addSmurf })(AddForm);
-
-// Connect this component to the error state slice, setError and addSmurf actions. Complete the form handling code.
-
-//   * [X] Connect your error state slice, setError and addSmurf actions to the AddForm component.
-//   * [X] Replace all instances of the errorMessage static variable with your error message state slice. 
-//   * [X] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when validation code fails.
-//   * [X] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summery passed as arguments. Test that a smurf is correctly added to when the form is submitted.

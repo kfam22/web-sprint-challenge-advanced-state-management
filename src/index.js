@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducer from './reducers/index';
-
 import "./index.css";
 import App from "./App";
 
@@ -24,7 +22,3 @@ ReactDOM.render(
     rootElement
 );
 
-//Task List:
-//1. [X]Add in all necessary components and libary methods.
-//2. [X]Create a store that includes thunk and logger middleware support.
-//3. [X]Wrap the App component in a react-redux Provider element.
