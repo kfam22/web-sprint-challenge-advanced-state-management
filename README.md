@@ -1,4 +1,4 @@
-# Advanced State Management Sprint Challenge!
+# Advanced State Management Sprint Challenge
 
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
 
@@ -15,9 +15,9 @@ You are not allowed to collaborate during the sprint challenge.
 In this challenge, you will build a Smurfs village database utilizing Redux as your state management system. Build this challenge from the ground up using what you have learned about state management.
 
 ## Project Setup
-* [ ] Run npm install to install your dependencies.
-* [ ] Run npm start to run your frontend and backend code automatically.
-* [ ] Note your backend code will run automatically when your run npm start. There is no need to separately run a server.js file and no means to test the server through postman or the browser. Feel free to ignore any messages related to MSW or mock service workers.
+* [X] Run npm install to install your dependencies.
+* [X] Run npm start to run your frontend and backend code automatically.
+* [X] Note your backend code will run automatically when your run npm start. There is no need to separately run a server.js file and no means to test the server through postman or the browser. Feel free to ignore any messages related to MSW or mock service workers.
 
 ## Project Instructions
 
@@ -47,50 +47,50 @@ In this project, you will build the reducer, actions and basic redux connects to
 ## Project Requirements
 
 ### Complete reducers/index.js
-  Add in the needed state and reducer cases to hold and modify smurf error messages, loading status and smurf data. **If at all possible, add in action cases one at a time, instead of all at once. Test your state connects and reducer cases as nessisary.**
+  Add in the needed state and reducer cases to hold and modify smurf error messages, loading status and smurf data. **If at all possible, add in action cases one at a time, instead of all at once. Test your state connects and reducer cases as necessary.**
 
   * [ ] Adds the following state values into the initialState:
       - an array of smurfs
       - a boolean indicating if the app is loading
       - a string indicating a possible error message
 
-  * [ ] Add in the arguments needed to complete a standard reducer function.
-  * [ ] Add in a reducer case to accommodate the start of a smurf fetch.
-  * [ ] Add in a reducer case to accommodate the successful smurf api fetch.
-  * [ ] Add in a reducer cases to accommodate an error.
-  * [ ] Add in a reducer case to accommodate adding a smurf (including the name, nickname, position, description and an internally generated id) into your smurf list.
-  * [ ] Add in a reducer case that adds in a value to the error message.
+  * [X] Add in the arguments needed to complete a standard reducer function.
+  * [X] Add in a reducer case to accommodate the start of a smurf fetch.
+  * [X] Add in a reducer case to accommodate the successful smurf api fetch.
+  * [X] Add in a reducer cases to accommodate an error.
+  * [X] Add in a reducer case to accommodate adding a smurf (including the name, nickname, position, description and an internally generated id) into your smurf list.
+  * [X] Add in a reducer case that adds in a value to the error message.
 
 ### Complete index.js
-  Connect your application to reducer through redux with the thunk and logger middleware packages attached.
+  [X]Connect your application to reducer through redux with the thunk and logger middleware packages attached.
 
 ### Complete actions/index.js
   Add in the action creators and action constants needed to add a smurf to state and fetch smurfs from the server. **If at all possible, add in action cases one at a time, instead of all at once. Test your state connects and reducer cases as necessary.**
 
-  * [ ] Add a thunk action called fetchSmurfs that triggers a loading status display in our application, performs an axios call to retrieve all smurfs from the api. Save the result of to our state and show an error if one is made.
-  * [ ] Add a standard action that allows us to add new smurf (including the name, nickname, position, summary).
-  * [ ] Add a standard action that allows us to set the value of the error message slice of state.
+  * [X] Add a thunk action called fetchSmurfs that triggers a loading status display in our application, performs an axios call to retrieve all smurfs from the api. Save the result of to our state and show an error if one is made.
+  * [X] Add a standard action that allows us to add new smurf (including the name, nickname, position, summary).
+  * [X] Add a standard action that allows us to set the value of the error message slice of state.
   
 ### Complete App.js
   Connect component to the fetchSmurfs action.
   
-  * [ ] Connect the fetchSmurfs actions to the App component.
-  * [ ] Call the fetchSmurfs action when the component first loads.
+  * [X] Connect the fetchSmurfs actions to the App component.
+  * [X] Call the fetchSmurfs action when the component first loads.
 
 ### Complete components/SmurfList.js
   Connect this component to your smurfs and loading screen state slices.
   
-  * [ ] Connect the smurfs and loading state values to the SmurfList component.
-  * [ ] Replace the single Smurf component instance with a map return a Smurf component for each entry in the smurfs list.
-  * [ ] Replace the static isLoading variable with the state loading variable.
+  * [X] Connect the smurfs and loading state values to the SmurfList component.
+  * [X] Replace the single Smurf component instance with a map return a Smurf component for each entry in the smurfs list.
+  * [X] Replace the static isLoading variable with the state loading variable.
 
 ### Complete components/AddForm.js
   Connect this component to the error state slice, setError and addSmurf actions. Complete the form handling code.
 
-  * [ ] Connect your error state slice, setError and addSmurf actions to the AddForm component.
-  * [ ] Replace all instances of the errorMessage static variable with your error message state slice. 
-  * [ ] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when validation code fails.
-  * [ ] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summery passed as arguments. Test that a smurf is correctly added to when the form is submitted.
+  * [X] Connect your error state slice, setError and addSmurf actions to the AddForm component.
+  * [X] Replace all instances of the errorMessage static variable with your error message state slice. 
+  * [X] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when validation code fails.
+  * [X] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summery passed as arguments. Test that a smurf is correctly added to when the form is submitted.
 
 ## Important Notes:
 
@@ -111,10 +111,22 @@ In this project, you will build the reducer, actions and basic redux connects to
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers below.
 
-1. What problem does the context API help solve?
+1. What problem does the context API help solve??
+
+Context API helps to solve the problem of excessive prop drilling and overhead of setting up redux by allowing developers to connect variables at the global level.
 
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
+actions: includes instructions on how to change state based on the specific action type.  actions can include payload properties that can be applied to the state change, but aren't required.
+
+reducers: functions that return state data which is triggered by action types, usually in the form of a switch statement with cases for each action type
+
+store: stores an applications state data.
+
 3. What does `redux-thunk` allow us to do? How does it change our `action-creators`?
 
+Redux thunk allows us to call actions that return functions rather than action objects and intercepts the redux flow to perform an async operation before the returned info gets to the reducer. The function gets the dispatch method as a parameter which is used to dispatch regular actions in the function after an async operation takes place. 
+
 4. What is your favorite state management system you've learned and this sprint? Please explain why!
+
+I enjoyed Redux because I like the way that all portions of the process are organized into a clear flow.  The organizational aspect of it helped me easily read my code and trace back my steps when I encountered bugs.
