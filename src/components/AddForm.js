@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { setError, addSmurf } from '../actions';
 
-const AddForm = (props) => {
+const AddForm = ({ setError, addSmurf, error, dispatch }) => {
     const [state, setState] = useState({
         name:"",
         position:"",
@@ -9,7 +11,7 @@ const AddForm = (props) => {
     });
 
     //remove when error state is added
-    const errorMessage = "";
+    const errorMessage = error;
 
     const handleChange = e => {
         setState({
@@ -21,9 +23,17 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
+            setError('name, position, and nickname are required')
             //dispatch a custom error action
         } else {
             //dispatch an addSmurf action
+            addSmurf(state);
+            setState({
+                name:"",
+                position:"",
+                nickname:"",
+                description:""
+            })
         }
     }
 
@@ -54,10 +64,17 @@ const AddForm = (props) => {
     </section>);
 }
 
-export default AddForm;
+const mapStateToProps = state =>{
+    return{
+        error: state.error
+    }
+}
 
-//Task List:
-//1. Connect the errorMessage, setError and addSmurf actions to the AddForm component.
-//2. Replace all instances of the errorMessage static variable with your error message state value. 
-//3. Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when this validation code fails.
-//4. Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summury passed as arguments. Test that a smurf is correctly added to when the form is submitted.
+export default connect(mapStateToProps, { setError, addSmurf })(AddForm);
+
+// Connect this component to the error state slice, setError and addSmurf actions. Complete the form handling code.
+
+//   * [X] Connect your error state slice, setError and addSmurf actions to the AddForm component.
+//   * [X] Replace all instances of the errorMessage static variable with your error message state slice. 
+//   * [X] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when validation code fails.
+//   * [X] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summery passed as arguments. Test that a smurf is correctly added to when the form is submitted.
